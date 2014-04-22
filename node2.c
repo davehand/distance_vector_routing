@@ -21,8 +21,6 @@ struct distance_table
 struct rtpkt packet;
 /* students to write the following two routines, and maybe some others */
 
-/*similar in function to rtinit0, and rtinit1.
-Calculates shortest costs from node 1 to nodes 0,2,3 */
 void rtinit2()
 {
 	packet.mincost[0] = 999;
@@ -152,13 +150,3 @@ printdt2(dtptr)
 }
 
 
-linkhandler2(linkid, newcost)
-  int linkid, newcost;
-
-/* called when cost from 0 to linkid changes from current value to newcost*/
-/* You can leave this routine empty if you're an undergrad. If you want */
-/* to use this routine, you'll need to change the value of the LINKCHANGE */
-/* constant definition in prog3.c from 0 to 1 */
-
-{
-}

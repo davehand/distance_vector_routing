@@ -98,27 +98,27 @@ main()
         clocktime = eventptr->evtime;    /* update time to next event time */
         if (eventptr->evtype == FROM_LAYER2 ) {
             if (eventptr->eventity == 0)
-	      rtupdate0(eventptr->rtpktptr);
-	     else if (eventptr->eventity == 1)
-	      rtupdate1(eventptr->rtpktptr);
-	     else if (eventptr->eventity == 2)
-	      rtupdate2(eventptr->rtpktptr);
-	     else if (eventptr->eventity == 3)
-	      rtupdate3(eventptr->rtpktptr);
-             else { printf("Panic: unknown event entity\n"); exit(0); }
-	  }
+	            rtupdate0(eventptr->rtpktptr);
+	          else if (eventptr->eventity == 1)
+	            rtupdate1(eventptr->rtpktptr);
+	          else if (eventptr->eventity == 2)
+	            rtupdate2(eventptr->rtpktptr);
+	          else if (eventptr->eventity == 3)
+	            rtupdate3(eventptr->rtpktptr);
+            else { printf("Panic: unknown event entity\n"); exit(0); }
+	      }
         else if (eventptr->evtype == LINK_CHANGE ) {
             if (clocktime<10001.0) {
-	      linkhandler0(1,20);
-	      linkhandler1(0,20);
-              }
-	    else   {
-    	      linkhandler0(1,1);
-	      linkhandler1(0,1);
-              }
-	  }
+	            linkhandler0(1,20);
+	            linkhandler1(0,20);
+            }
+	          else {
+    	        linkhandler0(1,1);
+	            linkhandler1(0,1);
+            }
+	      }
           else
-             { printf("Panic: unknown event type\n"); exit(0); }
+            { printf("Panic: unknown event type\n"); exit(0); }
         if (eventptr->evtype == FROM_LAYER2 )
           free(eventptr->rtpktptr);        /* free memory for packet, if any */
         free(eventptr);                    /* free memory for event struct   */
