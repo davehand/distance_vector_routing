@@ -268,19 +268,19 @@ tolayer2(packet)
  /* be nice: check if source and destination id's are reasonable */
  if (packet.sourceid<0 || packet.sourceid >3) {
    printf("WARNING: illegal source id in your packet, ignoring packet!\n");
-   return;
+   return -1;
    }
  if (packet.destid<0 || packet.destid >3) {
    printf("WARNING: illegal dest id in your packet, ignoring packet!\n");
-   return;
+   return -1;
    }
  if (packet.sourceid == packet.destid)  {
    printf("WARNING: source and destination id's the same, ignoring packet!\n");
-   return;
+   return -1;
    }
  if (connectcosts[packet.sourceid][packet.destid] == 999)  {
    printf("WARNING: source and destination not connected, ignoring packet!\n");
-   return;
+   return -1;
    }
 
 /* make a copy of the packet student just gave me since he/she may decide */
@@ -319,3 +319,4 @@ tolayer2(packet)
      printf("    TOLAYER2: scheduling arrival on other side\n");
  insertevent(evptr);
 }
+
